@@ -7,12 +7,7 @@ export type Item = {
     completed: boolean;
 };
 
-const initialTodos: Item[] = [
-    { id: "1", title: "Learn DSA", completed: false },
-    { id: "2", title: "Practice react", completed: false },
-    { id: "3", title: "Wake up early in the morning", completed: false },
-    { id: "4", title: "Call your friend at 7am", completed: false },
-];
+const initialTodos: Item[] = [];
 
 type Action =
     | { type: "ADD_NEW_TODO"; payload: Item }
@@ -61,36 +56,35 @@ type TodoProviderProps = {
 };
 
 function TodoProvider({ children }: TodoProviderProps) {
-
-    const [todoTask , dispatch] = useReducer(reducer , initialTodos);
+    const [todoTask, dispatch] = useReducer(reducer, initialTodos);
 
     const addNewTodo = (newTask: Item) => {
         dispatch({
-          type: "ADD_NEW_TODO",
-          payload: newTask,
+            type: "ADD_NEW_TODO",
+            payload: newTask,
         });
-      };
-    
-      const deleteTodo = (id: string) => {
+    };
+
+    const deleteTodo = (id: string) => {
         dispatch({
-          type: "DELETE_TODO",
-          payload: id,
+            type: "DELETE_TODO",
+            payload: id,
         });
-      };
-    
-      const toggleTodo = (id: string) => {
+    };
+
+    const toggleTodo = (id: string) => {
         dispatch({
-          type: "TOGGLE_TODO",
-          payload: id,
+            type: "TOGGLE_TODO",
+            payload: id,
         });
-      };
-    
-      const updateTodo = (id: string, updatedTodo: string) => {
+    };
+
+    const updateTodo = (id: string, updatedTodo: string) => {
         dispatch({
-          type: "UPDATE_TODO",
-          payload: { id:id, updatedTodo: updatedTodo },
+            type: "UPDATE_TODO",
+            payload: { id: id, updatedTodo: updatedTodo },
         });
-      };
+    };
 
     return (
         <>
@@ -110,15 +104,12 @@ function TodoProvider({ children }: TodoProviderProps) {
     );
 }
 
-export function useTodo()
-{
+export function useTodo() {
     const obj = useContext(TodoContext);
-    if(obj===undefined)
-    {
+    if (obj === undefined) {
         throw new Error("use Reducer must be used within a TodoProvider");
-
     }
-    return obj ;
+    return obj;
 }
 
 export default TodoProvider;
