@@ -57,7 +57,7 @@ function EditModal({ id, title, setModals }: EditModalProps) {
                   </h2>
                   <form
                       action=""
-                      className=" px-4 pt-4 flex flex-col gap-4"
+                      className=" px-4 pt-4 flex flex-col gap-1"
                       onSubmit={handleSubmit(handleData)}
                   >
                       <textarea
@@ -67,7 +67,7 @@ function EditModal({ id, title, setModals }: EditModalProps) {
                       ></textarea>
                       {/* ===> Below code will handle error messages */}
                       {errors.myTodo && (
-                          <p className="px-4 text-red-600">
+                          <p className=" sm:px-4 text-[8px] sm:text-base text-red-600">
                               {errors.myTodo.message}
                           </p>
                       )}

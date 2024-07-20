@@ -73,7 +73,7 @@ function TodoForm({ setShowInputModal }: TodoFormProps) {
             </form>
             {/* ======> Handeling error messages below */}
             {errors.newTodo && (
-                <p className="px-4 text-red-600">{errors.newTodo.message}</p>
+                <p className="px-4 text-[10px] mt-1 sm:text-base text-red-600">{errors.newTodo.message}</p>
             )}
         </div>
     );
