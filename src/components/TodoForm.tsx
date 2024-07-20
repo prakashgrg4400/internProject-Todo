@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 type TodoFormProps = {
     setShowInputModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+//!==>  Creating schema and handeling form validation using refine
 const schema = z.object({
     newTodo: z.string().refine((value) => value.trim().length > 0, {
         message: "Input field is Empty!! Please fill above input field",
@@ -19,6 +21,7 @@ type FormData = z.infer<typeof schema>;
 function TodoForm({ setShowInputModal }: TodoFormProps) {
     const { addNewTodo } = useTodo();
 
+    //!==>  Using "react-hook-form" to handle form data, and connecting with "zod" using "resolver" .
     const {
         register,
         handleSubmit,
@@ -29,6 +32,7 @@ function TodoForm({ setShowInputModal }: TodoFormProps) {
         resolver: zodResolver(schema),
     });
 
+    //!==>  Adding our new todo .
     const handleData = (data: FormData) => {
         const newTodo= {
             id: crypto.randomUUID(),
@@ -39,6 +43,7 @@ function TodoForm({ setShowInputModal }: TodoFormProps) {
         toast.info("Your new todo is added successfulluy");
     };
 
+    //!==>  Resetting the form after submission is successful
     useEffect(() => {
         if (isSubmitSuccessful) {
             reset({ newTodo: "" });

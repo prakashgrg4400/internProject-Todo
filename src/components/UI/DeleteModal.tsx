@@ -10,6 +10,7 @@ type DeleteModalProps = {
 function DeleteModal({id,title,setModals}:DeleteModalProps) {
   const {deleteTodo} = useTodo();
 
+  //==> this will handle deleting our data as it will lead us to "TodoProvider"
   const handleDelete = ()=>{
     deleteTodo(id);
   }

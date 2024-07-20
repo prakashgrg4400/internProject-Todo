@@ -14,6 +14,7 @@ type EditModalProps = {
     >;
 };
 
+//!====>  creating schema using zod
 const schema = z.object({
   myTodo: z.string().refine((value) => value.trim().length > 0, {
     message: "You cannot leave the input field empty",
@@ -25,6 +26,7 @@ type FormData = z.infer<typeof schema>;
 function EditModal({ id, title, setModals }: EditModalProps) {
     const { updateTodo } = useTodo();
 
+    //!===> connecting zod with react-hook-form with the help of "zodResolver" .
     const {
         register,
         handleSubmit,
@@ -36,6 +38,7 @@ function EditModal({ id, title, setModals }: EditModalProps) {
         },
     });
 
+    //!===> Handeling form submission and updation "todo"
     const handleData:SubmitHandler<FormData> = (data)=>{
       updateTodo(id , data.myTodo);
       toast.info("Your Todo is updated successfully");

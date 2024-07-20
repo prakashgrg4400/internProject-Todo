@@ -23,6 +23,7 @@ function TodoList() {
       setListBy(e.target.value as ListByType);
     }
 
+    //=======>  Filtering logic here
     const filteredTodos  = todoTask.filter(todo=>{
       if(listBy==="All")return true;
       if(listBy==="Active")return !todo.completed;
@@ -40,7 +41,6 @@ function TodoList() {
                   className="outline-none border-2 border-gray-400 rounded-md text-xs sm:text-xl"
                   name="filterBy"
                   id=""
-                  // value={listBy}
                   onChange={handleOptions}
               >
                   {filterType.map((opt) => {

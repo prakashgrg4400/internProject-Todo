@@ -7,6 +7,7 @@ import NewModal from "./UI/NewModal";
 function TodoApp() {
   const [showInputModal , setShowInputModal] = useState<boolean>(false);
 
+  //===> stopping background scroll when modal is open
   useEffect(()=>{
     if (showInputModal) {
       document.documentElement.style.overflowY = "hidden";

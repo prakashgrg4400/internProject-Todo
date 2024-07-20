@@ -24,11 +24,13 @@ type TodoContextType = {
     updateTodo: (id: string, updatedTodo: string) => void;
 };
 
+//==> creating context
 const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
+//==> reducer function
 function reducer(state: Item[], action: Action) {
     switch (action.type) {
-        case "ADD_NEW_TODO":
+        case "ADD_NEW_TODO": 
             return [...state, action.payload];
         case "UPDATE_TODO":
             return state.map((todo) => {
@@ -55,6 +57,8 @@ type TodoProviderProps = {
     children: ReactNode;
 };
 
+
+//==================== component ============================
 function TodoProvider({ children }: TodoProviderProps) {
     const [todoTask, dispatch] = useReducer(reducer, initialTodos);
 
@@ -104,6 +108,7 @@ function TodoProvider({ children }: TodoProviderProps) {
     );
 }
 
+//==> instead of importing "usecontext" and "TodoContext" in every component, we can directly use this function.
 export function useTodo() {
     const obj = useContext(TodoContext);
     if (obj === undefined) {
