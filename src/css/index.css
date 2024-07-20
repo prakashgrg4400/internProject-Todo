@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+  .btn{
+      @apply py-2 px-4 rounded-xl text-white  bg-gray-700 hover:bg-gray-950;
+  }
+  .modalBackdrop{
+      @apply h-screen w-screen fixed bg-black bg-opacity-20 z-[1];
+  }
+  .modalContent{
+    @apply bg-white rounded-lg z-[2] fixed w-50 h-50 top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%];
+  }
+}
